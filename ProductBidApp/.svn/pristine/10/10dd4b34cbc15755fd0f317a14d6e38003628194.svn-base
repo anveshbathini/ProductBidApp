@@ -1,0 +1,89 @@
+﻿@model BidAndAuction.Models.Bidding
+
+@{
+    ViewBag.Title = "Bidding";
+}
+
+<h2>Bidding</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+
+        <div class="row">
+        
+           <div class="col-md-6">
+               @Html.Label("Product Details")
+               @foreach (var a in ViewBag.prodList)
+{
+    <table>
+      
+        <tr>
+            @*<td><a href="@Url.Action("", "", a)">@a.ProdTitle</a></td>*@
+            <td><a href="/Bidding/Bidding?value=@a.ProdTitle">@a.ProdTitle</a></td>
+          </tr>  
+        
+
+        @*@a.ProdTitle*@
+
+        
+    </table>
+}
+                
+            </div>
+
+            <div class="float-right" style="z-index:1;position:absolute;right:300px;">
+                @Html.Label("Welcome")
+            </div>
+            <div class=" col-md-6" style="z-index:1;position:absolute;left:300px;">
+
+
+
+
+
+              
+                <div>
+
+                    @Html.LabelFor(model => model.ProdDesc)
+                    @Html.TextArea("Description", new { @style = "width: 500px;" })
+
+                </div>
+                <br /><br />
+                <div>
+
+                    @Html.LabelFor(model => model.InitPrice)
+                    @Html.TextBox("InitPrice")
+
+
+                    @Html.LabelFor(model => model.BidIncr)
+                    @Html.TextBox("IncrPrice")
+
+                </div>
+                <br /><br />
+
+                <div>
+                    <div class="float-right" style="z-index:1;position:absolute;right:300px;">
+
+                        <input type="button" value="Submit" />
+                    </div>
+                    <br /> <br /> <br />
+                </div>
+
+                <div>
+                    @Html.ActionLink("Sort By Name", "actionName", "controllerName")
+
+                    @Html.ActionLink("Sort by Price", "actionName", "controllerName")
+                </div>
+
+
+            </div>
+           
+                </div>
+        </div>
+
+    
+    
+
+    
+    
+}
